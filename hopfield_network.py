@@ -36,16 +36,17 @@ class HopfieldNetwork:
                     else:
                         self.output[i] = _input[i]
             else:
-                i = random.randrange(pattern_length)
-                f = 0
-                for j in range(pattern_length):
-                    f += self.weights[i][j] * _input[j]
-                if f > 0:
-                    self.output[i] = 1
-                elif f < 0:
-                    self.output[i] = -1
-                else:
-                    self.output[i] = _input
+                for i in random.shuffle(range(pattern_length)):
+                    f = 0
+                    for j in range(pattern_length):
+                        f += self.weights[i][j] * _input[j]
+                    if f > 0:
+                        self.output[i] = 1
+                    elif f < 0:
+                        self.output[i] = -1
+                    else:
+                        self.output[i] = _input[i]
+                    _input[i] = self.output[i]
 
             is_stable = True
             for i in range(pattern_length):
