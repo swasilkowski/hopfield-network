@@ -22,18 +22,27 @@ def get_inputs(elements):
 def main(argv):
     random.seed()
 
-    trainFilePath = os.path.normpath(os.getcwd() + r"\data\animals-14x9.csv")
-    #testFilePath = os.getcwd() + r"\data\small-7x7_input.csv"
+    trainFilePath = os.path.normpath(os.getcwd() + r"\data\\large-25x25.csv")
     patterns = read_csv(trainFilePath)
-    #testInput = read_csv(testFilePath)[0]
-    testInput = patterns[3]
 
-    dim_x = 14
-    dim_y = 9
+    dim_x = 25
+    dim_y = 25
+    testInput = random_input(dim_x*dim_y)
 
     network = HopfieldNetwork(patterns, dim_x, dim_y)
     network.Associate(testInput, True)
 
+def random_input(pattern_length):
+    output = []
+    for i in range(pattern_length):
+        output.append(adjust_input_value(random.randint(0,1)))
+    return output
+
+def adjust_input_value(value):
+    if value == 0:
+        return -1
+    else:
+        return value
 
 
 if(__name__ == "__main__"):
