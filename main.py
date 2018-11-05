@@ -4,6 +4,7 @@ import os
 import copy
 import random
 from hopfield_network import HopfieldNetwork
+from visualize_gui import *
 
 def read_csv(filePath):
     elements = []
@@ -28,7 +29,12 @@ def main(argv):
     #testInput = read_csv(testFilePath)[0]
     testInput = patterns[0]
 
-    network = HopfieldNetwork(patterns, 14, 9)
+    dim_x = 14
+    dim_y = 9
+
+    visualize(testInput, dim_x, dim_y, False)
+
+    network = HopfieldNetwork(patterns, dim_x, dim_y)
     network.Associate(testInput, True)
 
 
