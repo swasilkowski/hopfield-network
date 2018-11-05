@@ -1,5 +1,6 @@
 import random
 import copy
+from visualize_gui import visualize
 
 class HopfieldNetwork:
     def __init__(self, patterns, dim_x, dim_y):
@@ -19,8 +20,8 @@ class HopfieldNetwork:
 
     def Associate(self, _input, is_synchronous):
         pattern_length = _input.__len__()
+        _input = visualize(_input, self.dim_x, self.dim_y, True)
         self.output = copy.deepcopy(_input)
-        self.PrintOutput()
 
         is_stable = False
         while(not is_stable):
@@ -53,16 +54,5 @@ class HopfieldNetwork:
                 if self.output[i] != _input[i]:
                     is_stable = False
             
-            self.PrintOutput()
+            self.output = visualize(self.output, self.dim_x, self.dim_y, True)
             _input = copy.deepcopy(self.output)
-
-    def PrintOutput(self):
-        for i in range(self.dim_y):
-            print([self._char_for_output(self.output[x]) for x in range(i * self.dim_x, (i + 1) * self.dim_x)])
-        input("Press enter to continue...")
-
-    def _char_for_output(self, value):
-        if value == 1:
-            return 'x'
-        else:
-            return ' '
