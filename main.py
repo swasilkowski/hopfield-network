@@ -32,7 +32,11 @@ def main(argv):
     dim_x = 14
     dim_y = 9
 
-    visualize(testInput, dim_x, dim_y, False)
+
+    #examples of using visualization
+    editted_pattern = testInput
+    editted_pattern = visualize(testInput, dim_x, dim_y, True)  #you can click and it edits the pattern
+    visualize(editted_pattern, dim_x, dim_y, False)  #you cannot click
 
     network = HopfieldNetwork(patterns, dim_x, dim_y)
     network.Associate(testInput, True)
