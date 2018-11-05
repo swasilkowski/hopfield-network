@@ -28,22 +28,22 @@ def visualize(pattern_in, dim_x, dim_y, edit):
     k=0
     for i in range(dim_y):
         for j in range(dim_x):
-            test = str(k)
+            number = str(k)
             if(pattern[k]==1):
                 if(edit == True):
-                    btn = Button(window, bg="black", fg="white", height="2", width="5", text=test, command=lambda m=k: change(m))
+                    btn = Button(window, bg="black", fg="white", height="2", width="5", text=number, command=lambda m=k: change(m))
                     btns.append(btn)
                     btn.grid(row = i, column = j)
                 if(edit == False):
-                    lbl = Label(window, bg="black", fg="white", height="2", width="5", text=test)
+                    lbl = Label(window, bg="black", fg="white", height="2", width="5", text=number)
                     lbl.grid(row = i, column = j)
             else:
                 if(edit == True):
-                    btn = Button(window, bg="white", height="2", width="5", text=test, command=lambda m=k: change(m))
+                    btn = Button(window, bg="white", height="2", width="5", text=number, command=lambda m=k: change(m))
                     btns.append(btn)
                     btn.grid(row = i, column = j)
                 if(edit == False):
-                    lbl = Label(window, bg="white", height="2", width="5", text=test)
+                    lbl = Label(window, bg="white", height="2", width="5", text=number)
                     lbl.grid(row = i, column = j)
             k=k+1
 
