@@ -22,14 +22,14 @@ def get_inputs(elements):
 def main(argv):
     random.seed()
 
-    trainFilePath = os.path.normpath(os.getcwd() + r"\data\animals-14x9.csv")
+    trainFilePath = os.path.normpath(os.getcwd() + r"\data\randomtest-7x7.csv")
     #testFilePath = os.getcwd() + r"\data\small-7x7_input.csv"
     patterns = read_csv(trainFilePath)
     #testInput = read_csv(testFilePath)[0]
-    testInput = patterns[3]
+    testInput = patterns[6]
 
-    dim_x = 14
-    dim_y = 9
+    dim_x = 7
+    dim_y = 7
 
     network = HopfieldNetwork(patterns, dim_x, dim_y)
     network.Associate(testInput, True)

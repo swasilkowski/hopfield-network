@@ -33,20 +33,29 @@ def visualize(pattern_in, dim_x, dim_y, edit):
                 if(edit == True):
                     btn = Button(window, bg="black", fg="white", height="2", width="5", text=number, command=lambda m=k: change(m))
                     btns.append(btn)
-                    btn.grid(row = i, column = j)
+                    btn.grid(row = i+1, column = j)
                 if(edit == False):
                     lbl = Label(window, bg="black", fg="white", height="2", width="5", text=number)
-                    lbl.grid(row = i, column = j)
+                    lbl.grid(row = i+1, column = j)
             else:
                 if(edit == True):
                     btn = Button(window, bg="white", height="2", width="5", text=number, command=lambda m=k: change(m))
                     btns.append(btn)
-                    btn.grid(row = i, column = j)
+                    btn.grid(row = i+1, column = j)
                 if(edit == False):
                     lbl = Label(window, bg="white", height="2", width="5", text=number)
-                    lbl.grid(row = i, column = j)
+                    lbl.grid(row = i+1, column = j)
             k=k+1
 
+    def print():
+        prt = ""
+        for pat in pattern:
+            prt = prt + str(pat) + ", "
+
+        messagebox.showinfo("Pattern",prt)
+
+    btn = Button(window, text="Show current pattern", command=print)
+    btn.grid(row = 0, column = 0, columnspan = "4")
 
     window.mainloop()
 
