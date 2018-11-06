@@ -34,6 +34,17 @@ def main(argv):
     network = HopfieldNetwork(patterns, dim_x, dim_y)
     network.Associate(testInput, True)
 
+def random_input(pattern_length):
+    output = []
+    for i in range(pattern_length):
+        output.append(adjust_input_value(random.randint(0,1)))
+    return output
+
+def adjust_input_value(value):
+    if value == 0:
+        return -1
+    else:
+        return value
 
 
 if(__name__ == "__main__"):
